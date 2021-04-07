@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - node
+before_install:
+  # Install zookeeper
+  - wget http://www.eu.apache.org/dist/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz
+  - tar xzf zookeeper-${ZOOKEEPER_VERSION}.tar.gz
+  - mkdir /tmp/zookeeper && cp integration/zookeeper/zoo.cfg zookeeper-${ZOOKEEPER_VERSION}/conf/zoo.cfg
+  - zookeeper-${ZOOKEEPER_VERSION}/bin/zkServer.sh start
 install:
   - npm install
 script:

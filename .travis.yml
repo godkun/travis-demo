@@ -10,6 +10,7 @@ before_install:
   - echo "clientPort=2181" >> zookeeper-3.4.9/conf/zoo.cfg
   - mkdir /tmp/zookeeper
   - zookeeper-3.4.9/bin/zkServer.sh start
+  - jps | grep -v Jps
 install:
   - npm install
 script:
